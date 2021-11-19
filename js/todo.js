@@ -13,12 +13,15 @@ function saveTodos() {
 function deleteTodo(e) {
   const li = e.target.parentElement;
   li.remove();
+  todos = todos.filter((todo) => todo.id !== parseInt(li.id));
+  saveTodos();
 }
 
 function paintTodo(newTodo) {
   const li = document.createElement("li");
+  li.id = newTodo.id;
   const span = document.createElement("span");
-  span.innerText = newTodo;
+  span.innerText = newTodo.text;
   const button = document.createElement("button");
   button.innerText = "❌";
   button.addEventListener("click", deleteTodo);
@@ -30,8 +33,13 @@ function paintTodo(newTodo) {
 function handleTodoSubmit(e) {
   e.preventDefault();
   const newTodo = todoInput.value;
-  todos.push(newTodo);
-  paintTodo(newTodo);
+  todoInput.value = "";
+  const newTodoObj = {
+    text: newTodo,
+    id: Date.now(),
+  };
+  todos.push(newTodoObj);
+  paintTodo(newTodoObj);
   saveTodos();
 }
 
@@ -44,7 +52,3 @@ if (savedTodos !== null) {
   todos = parsedTodos;
   parsedTodos.forEach(paintTodo);
 }
-
-//JSON.stringify(todos)를 사용하여 localStorage에 todos를 string으로 저장
-// JSON.parse를 사용하여 string을 JavaScript가 이해할 수 있는 array로 저장
-// forEach는 array의 각 item에 대해 function을 실행
