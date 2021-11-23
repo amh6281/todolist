@@ -5,26 +5,30 @@
     <link rel="stylesheet" type="text/css" href="css/style.css" />
   </head>
   <body>
-    <form class="hidden" id="login-form">
-      <input
-        required
-        maxlength="15"
-        type="text"
-        placeholder="What is your name?"
-      />
-      <input type="submit" value="Login" />
-    </form>
-    <h2 id="clock">00:00</h2>
-    <h1 id="greeting" class="hidden"></h1>
-    <form id="todo-form">
-      <input type="text" placeholder="Write a To Do and Press Enter" />
-    </form>
-    <ul id="todo-list"></ul>
-    <div id="wiseSaying">
+    <div class="display-image-brightness"></div>
+    <div class="display-header" id="weather">
       <span></span>
       <span></span>
     </div>
-    <div id="weather">
+
+    <div class="display-main">
+      <h2 id="clock">00:00:00</h2>
+      <form class="hidden" id="login-form">
+        <input required type="text" placeholder="What is your name?" />
+        <button>Log In</button>
+      </form>
+      <h1 class="hidden" id="greeting"></h1>
+      <form id="todo-form">
+        <input
+          type="text"
+          placeholder="Wtite a To Do and Press Enter"
+          required
+        />
+      </form>
+      <ul id="todo-list"></ul>
+    </div>
+
+    <div class="display-footer" id="wiseSaying">
       <span></span>
       <span></span>
     </div>
